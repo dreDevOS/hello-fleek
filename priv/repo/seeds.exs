@@ -12,6 +12,7 @@
 
 
 defmodule Seeds.DepartmentsAndCommunes do
+  use Mix.Project
 
     @doc "Imports departments and communes from the given CSV to the database"
     def import_from_csv(csv_path) do
@@ -27,6 +28,10 @@ defmodule Seeds.DepartmentsAndCommunes do
   
     defp _process_csv_row(row, agent) do
       # TODO
+    end
+    defp aliases do
+      ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+       "ecto.reset": ["ecto.drop", "ecto.setup"]]
     end
   
   end
